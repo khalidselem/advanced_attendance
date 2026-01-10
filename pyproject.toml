@@ -1,0 +1,16 @@
+[project]
+name = "advanced_attendance"
+authors = [
+    { name = "eng.khalidselim", email = "khalidselim05@gmail.com"}
+]
+description = "Advanced Attendance Management - Allows multiple attendance records for same employee on same day when overlap or additional attendance is enabled"
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "advanced_attendance"
