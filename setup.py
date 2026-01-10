@@ -16,4 +16,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     install_requires=install_requires,
+    package_data={
+        "": ["*.json", "*.js", "*.css", "*.html", "*.md", "*.txt", "*.py"],
+    },
 )
