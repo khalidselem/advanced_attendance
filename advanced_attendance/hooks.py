@@ -121,13 +121,21 @@ override_doctype_class = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "Salary Structure Assignment": {
+        "validate": "advanced_attendance.overrides.salary_structure_assignment.calculate_base_from_settings"
+    }
+}
+
+# Fixtures for custom fields
+fixtures = [
+    {
+        "doctype": "Custom Field",
+        "filters": [
+            ["dt", "in", ["Salary Structure Assignment"]]
+        ]
+    }
+]
 
 # Scheduled Tasks
 # ---------------

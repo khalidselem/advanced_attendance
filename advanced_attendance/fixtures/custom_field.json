@@ -1,0 +1,29 @@
+[
+    {
+        "doctype": "Custom Field",
+        "dt": "Salary Structure Assignment",
+        "fieldname": "custom_gross_pay",
+        "fieldtype": "Currency",
+        "label": "Gross Pay",
+        "insert_after": "base",
+        "description": "Enter gross pay to auto-calculate base using Settings formula"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Salary Structure Assignment",
+        "fieldname": "custom_minimum_base_amount",
+        "fieldtype": "Currency",
+        "label": "Minimum Base Amount",
+        "insert_after": "custom_gross_pay",
+        "description": "Minimum base amount (overrides Settings default)"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Salary Structure Assignment",
+        "fieldname": "custom_maximum_base_amount",
+        "fieldtype": "Currency",
+        "label": "Maximum Base Amount",
+        "insert_after": "custom_minimum_base_amount",
+        "description": "Maximum base amount (overrides Settings default)"
+    }
+]

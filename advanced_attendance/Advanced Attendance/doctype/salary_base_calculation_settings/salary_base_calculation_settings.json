@@ -1,0 +1,78 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "creation": "2026-01-13 10:10:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "enable_auto_base",
+        "gross_divider",
+        "column_break_defaults",
+        "default_min_base",
+        "default_max_base"
+    ],
+    "fields": [
+        {
+            "default": "0",
+            "fieldname": "enable_auto_base",
+            "fieldtype": "Check",
+            "label": "Enable Auto Base Calculation",
+            "description": "When enabled, base will be automatically calculated as gross_pay / gross_divider"
+        },
+        {
+            "default": "1.3",
+            "fieldname": "gross_divider",
+            "fieldtype": "Float",
+            "label": "Gross Divider",
+            "description": "Divisor used to calculate base from gross pay (base = gross / divider)",
+            "precision": "4"
+        },
+        {
+            "fieldname": "column_break_defaults",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "default_min_base",
+            "fieldtype": "Currency",
+            "label": "Default Minimum Base",
+            "description": "Default minimum base amount (used if not specified in Salary Structure Assignment)"
+        },
+        {
+            "fieldname": "default_max_base",
+            "fieldtype": "Currency",
+            "label": "Default Maximum Base",
+            "description": "Default maximum base amount (used if not specified in Salary Structure Assignment)"
+        }
+    ],
+    "issingle": 1,
+    "modified": "2026-01-13 10:10:00.000000",
+    "modified_by": "Administrator",
+    "module": "Advanced Attendance",
+    "name": "Salary Base Calculation Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "role": "HR Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "track_changes": 1
+}
