@@ -208,6 +208,71 @@ class CustomAttendance(Attendance):
         """Validate working hours."""
         if hasattr(super(), 'validate_working_hours'):
             super().validate_working_hours()
+    
+    def validate_duplicate_record(self):
+        """
+        Override the parent's duplicate record validation.
+        
+        This method is called by the parent Attendance class to check for
+        duplicate attendance records. We override it to skip the check when
+        overlap or additional attendance is enabled.
+        
+        This ensures duplicates are allowed during:
+        - Initial document save
+        - Workflow state transitions (approval)
+        - Document submission
+        """
+        # Check if we should skip duplicate validation
+        if self.should_skip_duplicate_check():
+            # Skip duplicate check entirely - allow the record
+            return
+        
+        # Check if this is a workflow transition (approval, rejection, etc.)
+        if self.is_workflow_transition_only():
+            return
+        
+        # For first record on employee+date, allow without overlap flag
+        filters = {
+            'employee': self.employee,
+            'attendance_date': self.attendance_date,
+            'docstatus': ['!=', 2]  # Exclude cancelled
+        }
+        if self.name and not self.is_new():
+            filters['name'] = ['!=', self.name]
+        
+        existing_count = frappe.db.count('Attendance', filters=filters)
+        if existing_count == 0:
+            # First record - no duplicate check needed
+            return
+        
+        # Has existing records but no overlap/additional flag - call parent validation
+        if hasattr(super(), 'validate_duplicate_record'):
+            super().validate_duplicate_record()
+    
+    def before_submit(self):
+        """
+        Hook called before document submission.
+        
+        During workflow approval that triggers submission, we need to ensure
+        the duplicate check is properly skipped.
+        """
+        # Set flag to indicate duplicate check should be skipped
+        if self.should_skip_duplicate_check():
+            self.flags.skip_duplicate_check = True
+        
+        # Call parent's before_submit if it exists
+        if hasattr(super(), 'before_submit'):
+            super().before_submit()
+    
+    def on_update(self):
+        """
+        Hook called after document update.
+        
+        This ensures state transitions don't trigger validation errors.
+        """
+        # Call parent's on_update if it exists
+        if hasattr(super(), 'on_update'):
+            super().on_update()
 
 
 def allow_duplicate_attendance(doc, method=None):
