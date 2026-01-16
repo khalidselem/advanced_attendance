@@ -67,7 +67,8 @@ doctype_js = {
 # ------------
 
 # before_install = "advanced_attendance.install.before_install"
-# after_install = "advanced_attendance.install.after_install"
+after_install = "advanced_attendance.install.after_install"
+after_migrate = "advanced_attendance.install.after_migrate"
 
 # Uninstallation
 # ------------
