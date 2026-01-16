@@ -35,8 +35,8 @@ def calculate_base_from_settings(doc, method=None):
     # Get settings (use cached single doc)
     try:
         settings = frappe.get_cached_doc("Salary Base Calculation Settings")
-    except frappe.DoesNotExistError:
-        # Settings not configured yet - skip calculation
+    except (frappe.DoesNotExistError, ImportError):
+        # Settings not configured yet or DocType module misconfigured - skip calculation
         return
     
     # Check if feature is enabled
