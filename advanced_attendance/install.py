@@ -47,7 +47,7 @@ def sync_salary_base_calculation_settings():
     else:
         # DocType exists, check if module is correct
         current_module = frappe.db.get_value("DocType", doctype_name, "module")
-        if current_module != "advanced_attendance":
-            frappe.db.set_value("DocType", doctype_name, "module", "advanced_attendance")
+        if current_module != "Advanced Attendance":
+            frappe.db.set_value("DocType", doctype_name, "module", "Advanced Attendance")
             frappe.db.commit()
-            print(f"✓ Updated module for '{doctype_name}' to 'advanced_attendance'")
+            print(f"✓ Updated module for '{doctype_name}' to 'Advanced Attendance'")
