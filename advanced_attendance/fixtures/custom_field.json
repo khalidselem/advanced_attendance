@@ -1,6 +1,7 @@
 [
     {
         "doctype": "Custom Field",
+        "name": "Salary Structure Assignment-custom_gross_pay",
         "dt": "Salary Structure Assignment",
         "fieldname": "custom_gross_pay",
         "fieldtype": "Currency",
@@ -10,6 +11,7 @@
     },
     {
         "doctype": "Custom Field",
+        "name": "Salary Structure Assignment-custom_minimum_base_amount",
         "dt": "Salary Structure Assignment",
         "fieldname": "custom_minimum_base_amount",
         "fieldtype": "Currency",
@@ -19,6 +21,7 @@
     },
     {
         "doctype": "Custom Field",
+        "name": "Salary Structure Assignment-custom_maximum_base_amount",
         "dt": "Salary Structure Assignment",
         "fieldname": "custom_maximum_base_amount",
         "fieldtype": "Currency",
